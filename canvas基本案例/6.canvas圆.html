@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500">sorry</canvas>
+	</body>
+	<script type="text/javascript">
+		var myCanvas = document.getElementById("myCanvas");
+		var ctx = myCanvas.getContext('2d');
+		
+		//第一二个参数是圆心的位置
+		//第三个参数是圆的半径
+		//第四个参数是开始的角度
+		//第五个参数是结束的角度
+		//第六个参数:顺时针(false)还是逆时针(true)
+		//0deg在右边
+		var deg = Math.PI/180;
+		ctx.arc(200,200,50,Math.PI*2,0,false);
+		ctx.fillStyle = 'purple';
+		ctx.fill();
+		
+	</script>
+</html>

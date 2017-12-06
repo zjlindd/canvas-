@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500">对不起,您的浏览器不支持canvas,请下载最新版本的浏览器</canvas>
+	</body>
+	<script type="text/javascript">
+		var myCanvas = document.getElementById("myCanvas");
+		//拿到页面中canvas标签的画笔
+		var ctx = myCanvas.getContext('2d')
+		//接下来就可以用这个canvas的画笔来画东西
+		
+		//开始一个新的路径
+		ctx.beginPath();
+		//moveTo()设置起点
+		ctx.moveTo(100,100);
+		//lineTop()设置线的终点
+		ctx.lineTo(200,200);
+		//设置颜色
+		ctx.strokeStyle = 'red';
+		//线宽
+		ctx.lineWidth = 10;
+		//在线两头加圆角帽
+		ctx.lineCap = 'round';
+		//stroke()画线,把上面的路径画出来
+		ctx.stroke();
+		
+	</script>
+</html>

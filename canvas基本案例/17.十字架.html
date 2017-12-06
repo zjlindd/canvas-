@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500">sorru</canvas>
+	</body>
+	<script type="text/javascript">
+		var myCanvas = document.getElementById("myCanvas");
+		var ctx = myCanvas.getContext('2d');
+		setInterval(function(){
+			ctx.rotate(Math.PI/18);			
+			ctx.beginPath();
+			ctx.moveTo(250,0);
+			ctx.lineTo(250,500);
+			ctx.strokeStyle = 'red';
+			ctx.stroke();
+			ctx.closePath();
+			
+			ctx.beginPath();
+			ctx.moveTo(0,250);
+			ctx.lineTo(500,250);
+			ctx.strokeStyle = 'red';
+			ctx.stroke();
+			ctx.closePath();
+		},100);
+		
+	</script>
+</html>

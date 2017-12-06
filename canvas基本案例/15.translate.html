@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+		</style>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500">sorry</canvas>
+	</body>
+	<script type="text/javascript">
+		var myCanvas = document.getElementById("myCanvas");
+		var ctx = myCanvas.getContext('2d');
+		//移动的是canvas的坐标系
+		
+		
+		var x = 0;
+		setInterval(function(){
+			x += 10;
+			ctx.clearRect(0,0,myCanvas.width,myCanvas.height);
+			ctx.translate(x,0);
+			ctx.fillStyle = 'red';
+			ctx.fillRect(0,0,100,100);
+		},200);
+		
+	</script>
+</html>

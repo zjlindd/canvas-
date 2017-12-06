@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{border: 1px solid red;}
+		</style>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500">sorry</canvas>
+	</body>
+	<script type="text/javascript">
+		var myCanvas = document.getElementById("myCanvas");
+		var ctx = myCanvas.getContext('2d');
+		var deg = Math.PI/180;
+		//把坐标系移动到中心
+		ctx.translate(myCanvas.width/2,myCanvas.height/2);
+		//1.画表盘
+		function drawPan(){
+			ctx.beginPath();
+			ctx.arc(0,0,myCanvas.width/2,0,Math.PI*2,true);
+			ctx.fill();
+		}
+		
+		drawPan();
+		
+		//画大刻度
+		function drawBig(){
+			ctx.save();
+			for (var i = 0; i < 12; i++) {
+				ctx.rotate(Math.PI/6);
+				ctx.beginPath();
+				ctx.moveTo(0,-240);
+				ctx.lineTo(0,-210);
+				ctx.lineWidth = 10;
+				ctx.lineCap = 'round';
+				ctx.strokeStyle = 'white';
+				ctx.stroke();
+			}
+			ctx.restore();
+		}
+		
+		
+		
+		//画小刻度
+		function drawSmall(){
+			ctx.save();
+			for (var i = 0; i < 60; i++) {
+				ctx.rotate(deg*6);
+				ctx.beginPath();
+				ctx.moveTo(0,-240);
+				ctx.lineTo(0,-225);
+				ctx.lineWidth = 4;
+				ctx.lineCap = 'round';
+				ctx.strokeStyle = 'green';
+				ctx.stroke();
+			}
+			ctx.restore();
+		}
+		drawSmall();
+		drawBig();
+		
+		//画秒针
+		function drawSecond(){
+			ctx.beginPath();
+			ctx.moveTo(0,0);
+			ctx.lineTo(0,-200);
+			ctx.strokeStyle = 'red';
+			ctx.stroke();
+			ctx.closePath();
+		}
+		
+		drawSecond();
+		
+		//画分针
+		function drawMin(){
+			ctx.beginPath();
+			ctx.moveTo(0,0);
+			ctx.lineTo(0,-150);
+			ctx.lineWidth = 3;
+			ctx.strokeStyle = 'yellow';
+			ctx.stroke();
+			ctx.closePath();
+		}
+		
+		drawMin();
+		
+		
+		//画时针
+		function drawHour(){
+			ctx.beginPath();
+			ctx.moveTo(0,0);
+			ctx.lineTo(0,-100);
+			ctx.lineWidth = 6;
+			ctx.strokeStyle = 'hotpink';
+			ctx.stroke();
+			ctx.closePath();
+		}
+		
+		drawMin();
+		drawHour();
+		//动起来
+		setInterval(function(){
+			var nowDate = new Date();
+			var second = nowDate.getSeconds();
+			var min = nowDate.getMinutes();
+			var hour = nowDate.getHours();
+			ctx.clearRect(-myCanvas.width/2,-myCanvas.height/2,myCanvas.width,myCanvas.height);
+			drawPan();
+			drawSmall();
+			drawBig();			
+			ctx.save();
+			ctx.rotate(deg*6*second);//一秒钟走六度
+			drawSecond();
+			ctx.restore();
+			
+			ctx.save();
+			ctx.rotate(deg*6*min);//一分钟走六度
+			drawMin();
+			ctx.restore();
+			
+			ctx.save();
+			ctx.rotate(deg*30*hour+deg*0.5*min+deg*0.008*second);//算一个基数，分针走一度时针走几度，秒针走几度，，，，，，，简单地讲时针走一圈是12小时＝720分
+			drawHour();
+			ctx.restore();		
+		},1000);
+		
+	</script>
+</html>

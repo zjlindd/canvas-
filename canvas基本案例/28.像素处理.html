@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500">sorry</canvas>
+	</body>
+	<script type="text/javascript">
+		var myCanvas = document.getElementById("myCanvas");
+		var ctx = myCanvas.getContext('2d');
+		
+		var imgObj = new Image();
+		imgObj.src = 'img/8.jpg';
+		imgObj.onload = function(){
+			//参数:图片对象,原图x,原图y,原图w,原图h,canvas x,cavans y,cavans w,cavans h,
+			ctx.drawImage(this,0,0,100,100);
+			
+			
+			var imageData = ctx.getImageData(0,0,100,100);
+			var pixels = imageData.data;
+			console.log(pixels);
+			
+			//反色
+			for (var i = 0; i < pixels.length; i+=4) {
+				var r = pixels[i];
+				var g = pixels[i+1];
+				var b = pixels[i+2];
+				
+				pixels[i] = 255-r;
+				pixels[i+1] = 255-g;
+				pixels[i+2] = 255-b;
+			}
+			//参数:图片数据,放在canvas中的位置(不需要给大小)
+			ctx.putImageData(imageData,120,0);
+			
+			
+			//灰度
+			for (var i = 0; i < pixels.length; i+=4) {
+				var r = pixels[i];
+				var g = pixels[i+1];
+				var b = pixels[i+2];
+				
+				var rgb = (r+g+b)/3;
+				
+				pixels[i] = rgb;
+				pixels[i+1] = rgb;
+				pixels[i+2] = rgb;
+			}
+			//参数:图片数据,放在canvas中的位置(不需要给大小)
+			ctx.putImageData(imageData,240,0);
+			
+			
+		}
+	</script>
+</html>

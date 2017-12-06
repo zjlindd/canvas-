@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500">sorry</canvas>
+	</body>
+	<script type="text/javascript">
+		var myCanvas = document.getElementById("myCanvas");
+		
+		var ctx = myCanvas.getContext('2d');
+		
+		function randFn(min,max){
+			return parseInt(Math.random()*(max-min)+min);
+		}
+		
+		
+		function Ball(){
+			var r1 = randFn(20,50);
+			this.x = randFn(r1,myCanvas.width-r1);
+			this.y = randFn(r1,myCanvas.height-r1);
+			this.r = r1;
+			this.c = 'rgba('+ randFn(0,256) +','+ randFn(0,256) +','+ randFn(0,256) +','+ Math.random().toFixed(1) +')';
+		}
+		
+		Ball.prototype.draw = function(){
+			ctx.beginPath();
+			ctx.fillStyle = this.c;
+			ctx.arc(this.x,this.y,this.r,0,Math.PI*2,true);
+			ctx.fill();
+		}
+		
+		for (var i = 0; i < 100; i++) {
+			var ball = new Ball();
+			ball.draw();
+		}
+		
+	</script>
+</html>

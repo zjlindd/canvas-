@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500">sorry</canvas>
+	</body>
+	<script type="text/javascript">
+		var myCanvas = document.getElementById("myCanvas");
+		var ctx = myCanvas.getContext('2d');		
+		ctx.beginPath();
+		ctx.moveTo(100,70);
+		ctx.lineTo(250,70);
+		ctx.lineTo(120,150);
+		ctx.lineTo(175,40);
+		ctx.lineTo(230,150);
+		ctx.closePath();
+		ctx.stroke();
+	</script>
+</html>

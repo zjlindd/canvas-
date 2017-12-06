@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500">sorry</canvas>
+	</body>
+	<script type="text/javascript">
+		var myCanvas = document.getElementById("myCanvas");
+		var ctx = myCanvas.getContext('2d');
+		
+		var imgObj = new Image();
+		imgObj.src = 'img/8.jpg';
+		imgObj.onload = function(){
+			//参数:图片对象,原图x,原图y,原图w,原图h,canvas x,cavans y,cavans w,cavans h,
+			ctx.drawImage(this,0,0,100,100,0,0,500,500);
+		}
+	</script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500">sorry</canvas>
+	</body>
+	<script type="text/javascript">
+		var myCanvas = document.getElementById("myCanvas");
+		var ctx = myCanvas.getContext('2d');
+		
+		function randFn(min,max){
+			return parseInt(Math.random()*(max-min+1)+min);
+		}
+		
+		for (var i = 0; i < 100; i++){
+			for (var j=0;j<100;j++) {
+		    ctx.fillStyle = 'rgb('+ randFn(0,255) +','+ randFn(0,255) +','+ randFn(0,255) +')';
+			ctx.fillRect(20*i,20*j,20,20);
+			}
+			
+		}
+		
+	</script>
+</html>

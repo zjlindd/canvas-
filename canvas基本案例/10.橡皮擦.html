@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500">sorry</canvas>
+	</body>
+	<script type="text/javascript">
+		var myCanvas = document.getElementById("myCanvas");
+		var ctx = myCanvas.getContext('2d');		
+		ctx.fillStyle = 'lightgray';
+		ctx.fillRect(0,0,myCanvas.width,myCanvas.height);		
+		myCanvas.onmousedown = function(e){
+			myCanvas.onmousemove = function(e){
+				var e = e||window.event;
+				var x = e.clientX-myCanvas.offsetLeft;
+				var y = e.clientY-myCanvas.offsetTop;				
+//				ctx.clearRect(x,y,35,35);	
+				ctx.beginPath();
+				ctx.arc(x,y,20,Math.PI*2,0,false);
+				ctx.fillStyle="#FF0000";
+				ctx.fill();
+				ctx.closePath();
+			}
+		}
+		
+		myCanvas.onmouseup = function(){
+			alert("3333")
+			myCanvas.onmousemove = null;
+		}
+		
+		
+	</script>
+</html>

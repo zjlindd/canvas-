@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500">sorry!</canvas>
+	</body>
+	<script type="text/javascript">
+		var myCanvas = document.getElementById("myCanvas");
+		var ctx = myCanvas.getContext('2d');		
+		//一个三角形
+		ctx.beginPath();
+		ctx.lineWidth = 10;
+		ctx.moveTo(100,100);
+		ctx.lineTo(100,200);
+		ctx.lineTo(200,200);
+		ctx.closePath();//有闭合路径的作用
+		ctx.stroke();
+	</script>
+</html>

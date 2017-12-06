@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{background: url(img/8.jpg);background-size: 100% 100%;}
+		</style>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500">sorry</canvas>
+	</body>
+	<script type="text/javascript">
+		var myCanvas = document.getElementById("myCanvas");
+		var ctx = myCanvas.getContext('2d');
+		
+		ctx.beginPath();
+		ctx.fillStyle = 'lightgray';
+		ctx.fillRect(0,0,myCanvas.width,myCanvas.height);
+		
+		ctx.globalCompositeOperation = 'destination-out';
+		
+		myCanvas.onmousedown = function(){
+			myCanvas.onmousemove = function(e){
+				var e = e||event;
+				var x = e.clientX - myCanvas.offsetLeft;
+				var y = e.clientY - myCanvas.offsetTop;
+				ctx.beginPath();
+				ctx.fillStyle = 'red';
+				ctx.arc(x,y,10,0,Math.PI*2,true);
+				ctx.fill();
+			}
+		}
+		
+		myCanvas.onmouseup = function(){
+			myCanvas.onmousemove = null;
+		}
+		
+		
+		
+	</script>
+</html>

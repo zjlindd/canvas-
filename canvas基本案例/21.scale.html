@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			#myCanvas{
+				background:navajowhite;
+				opacity: 0.6;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500">sorry</canvas>
+	</body>
+	<script type="text/javascript">
+		var myCanvas = document.getElementById("myCanvas");
+		var ctx = myCanvas.getContext('2d');
+		ctx.scale(2,1);
+		
+		ctx.fillStyle = 'red';
+		ctx.fillRect(0,0,250,250);
+		
+		
+	</script>
+</html>
